@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>CashApp</title>
+    <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{% static 'css/app.css' %}">
+  </head>
+  <body class="bodyClass">
+
+    {% if user.is_authenticated %}
+    <nav class="navbar navbar-default techfont custom-navbar">
+      <div class="container">
+        <ul class="nav navbar-nav">
+          <li><a class='navbar-brand bigbrand' href="">CashApp</a></li>
+          <li><a href="{% url 'dashboard' %}">DashBoard</a></li>
+          <li><a href="{% url 'cheltuieli_list' %}">Cheltuieli</a></li>
+          <li><a href="{% url 'venituri_list' %}">Venituri</a></li>
+          <!-- TO DO -->
+          <li><a href="#">Rapoarte</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+    {% else %}
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <ul class="nav navbar-nav">
+          <li><a class='navbar-brand bigbrand' href="">CashApp</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+        </ul>
+        <!-- LOGIN PART -->
+        <ul class="nav navbar-nav navbar-right">
+          <li><a class='nav navbar-right' href="{% url 'login' %}" ><span class="glyphicon glyphicon-user"></span></a></li>
+      </div>
+    </nav>
+    {% endif %}
+
+    <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                  <div class="blog_post">
+                    {% block body_block %}
+
+                    {% endblock %}
+
+                  </div>
+
+                </div>
+            </div>
+        </div>
+
+  </body>
+</html>

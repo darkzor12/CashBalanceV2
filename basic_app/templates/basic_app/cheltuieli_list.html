@@ -1,0 +1,25 @@
+{%extends 'basic_app/base.html' %}
+
+{% block body_block %}
+
+<div class="centerstage">
+
+<a class ='btn btn-default' href="{% url 'cheltuieli_new' %}"><span class='glyphicon glyphicon-plus'></a>
+  {% if user.is_authenticated %}
+  {% for cheltuieli in cheltuieli_list %}
+  <div class="cheltuieli">
+      <h1><a href="{% url 'cheltuieli_detail' pk=cheltuieli.pk %}">{{cheltuieli.sumaCheltuita}} LEI</a></h1>
+      <div class="date">
+          <p>Created on : {{cheltuieli.create_date|date:"Y-m-d H:i"}}</p>
+          <a class='btn btn-primary' href="{% url 'cheltuieli_update' pk=cheltuieli.pk %}">
+            <span class='glyphicon glyphicon-pencil'></span>  </a>
+          <a class='btn btn-primary' href="{% url 'cheltuieli_remove' pk=cheltuieli.pk %}">
+            <span class='glyphicon glyphicon-remove'></span>  </a>
+      </div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+
+{% endblock %}

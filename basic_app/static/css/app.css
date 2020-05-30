@@ -1,0 +1,26 @@
+.bodyClass{
+  background: #669999
+  /* background: rgb(238,174,202);
+  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%); */
+}
+.cheltuieli {
+  border-radius: 25px;
+  background-color:#E0E0E0;
+  padding: 20px;
+  width: 800px;
+  height: 180px;
+  margin:20px auto;
+}
+.venituri{
+  border-radius: 25px;
+  background-color:#E0E0E0;
+  padding: 20px;
+  width: 800px;
+  height: 180px;
+  margin:20px auto;
+}
+
+.imgAtasamentCheltuieli{
+  width:500px;
+  height:500px;
+}

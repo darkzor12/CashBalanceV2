@@ -1,0 +1,23 @@
+{%extends 'basic_app/base.html' %}
+
+{% block body_block %}
+
+<div class="centerstage">
+<a class ='btn btn-default' href="{% url 'venituri_new' %}"><span class='glyphicon glyphicon-plus'></a>
+  {% for venituri in venituri_list %}
+  <div class="venituri">
+      <h1><a href="{% url 'venituri_detail' pk=venituri.pk %}">{{venituri.sumaVenit}} LEI</a></h1>
+      <div class="date">
+          <p>Created on : {{venituri.create_date|date:"Y-m-d H:i"}}</p>
+          <a class='btn btn-primary' href="{% url 'venituri_update' pk=venituri.pk %}">
+            <span class='glyphicon glyphicon-pencil'></span>  </a>
+          <a class='btn btn-primary' href="{% url 'venituri_remove' pk=venituri.pk %}">
+            <span class='glyphicon glyphicon-remove'></span>  </a>
+      </div>
+  </div>
+  {% endfor %}
+</div>
+
+
+
+{% endblock %}
