@@ -11,11 +11,13 @@ class Cheltuieli(models.Model):
     # sumaTotalCheltuita = models.FloatField(blank=True)
     create_date = models.DateTimeField(default=timezone.now)
     note = models.CharField(max_length=80)
-    atasament_cheltuieli = models.ImageField(upload_to='atasament_cheltuieli', blank=True)
+    atasament_cheltuieli = models.ImageField(upload_to='atasament_cheltuieli',null=True, blank=True)
     # TODO CATEGORIE
 
     def get_absolute_url(self):
         return reverse('cheltuieli_list')
+
+
 
 
 class Venituri(models.Model):
@@ -29,8 +31,7 @@ class Venituri(models.Model):
     def get_absolute_url(self):
         return reverse('venituri_list')
 
-    def get_atasament_venituri(self):
-        return atasament_venituri 
+
 
 
 class Sold(models.Model):

@@ -4,7 +4,11 @@
 
 <div class="centerstage">
 
-<a class ='btn btn-default' href="{% url 'cheltuieli_new' %}"><span class='glyphicon glyphicon-plus'></a>
+
+
+<p><a class ='btn btn-default add-button-cheltuieli' href="{% url 'cheltuieli_new' %}"><span class='glyphicon glyphicon-plus'></a>
+<img class="money-gif" src="https://media.giphy.com/media/l3mZaGv4Krokd3GM0/giphy.gif" alt="Wait ... ">
+</p>
   {% if user.is_authenticated %}
   {% for cheltuieli in cheltuieli_list %}
   <div class="cheltuieli">

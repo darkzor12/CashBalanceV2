@@ -6,6 +6,11 @@
 <h1>Momentul cand a fost creata aceasta actiune este: {{venituri.create_date}}</h1>
 <h1>Descrierea acestei actiuni: {{venituri.descriere}}</h1>
 <h1>Notele adaugate la aceasta actiune: {{venituri.note}}</h1>
+{% if venituri.atasament_venituri %}
 <h1>Atasamentele adaugate acestei actiuni:
   <br> <br> <br><img class="imgAtasamentCheltuieli" src="{{venituri.atasament_venituri.url}}" alt=""></h1>
+{% else %}
+<h1>Aceasta postare nu are atasamente</h1>
+{% endif %}
+
 {% endblock %}

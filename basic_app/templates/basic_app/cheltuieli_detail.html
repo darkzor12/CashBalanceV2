@@ -6,16 +6,10 @@
 <h1>Suma care a fost cheltuita este : {{cheltuieli.sumaCheltuita}} lei</h1>
 <h1>Momentul cand a fost creata aceasta actiune este: {{cheltuieli.create_date}}</h1>
 <h1>Notele adaugate la aceasta actiune: {{cheltuieli.note}}</h1>
-
-{% if atasament_cheltuieli.pk is None %}
-
+{% if cheltuieli.atasament_cheltuieli %}
 <h1>Atasamentele adaugate acestei actiuni:
   <br> <br> <br><img class="imgAtasamentCheltuieli" src="{{cheltuieli.atasament_cheltuieli.url}}" alt=""></h1>
-
 {% else %}
-
-<h1>Aceasta postare nu are atasamente adaugate</h1>
-
+<h1>Aceasta postare nu are atasamente</h1>
 {% endif %}
-
 {% endblock %}

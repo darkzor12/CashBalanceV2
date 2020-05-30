@@ -1,7 +1,15 @@
 .bodyClass{
-  background: #669999
+  background:#1a1300;
   /* background: rgb(238,174,202);
   background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%); */
+}
+.money-gif{
+  padding-left: 200px;
+  position: relative;
+}
+.add-button-cheltuieli{
+  background: #ffcc00;
+  position: relative;
 }
 .cheltuieli {
   border-radius: 25px;
