@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django.urls import reverse
 
+
 # Create your models here.
 
 class Cheltuieli(models.Model):
@@ -30,23 +31,3 @@ class Venituri(models.Model):
 
     def get_absolute_url(self):
         return reverse('venituri_list')
-
-
-
-
-class Sold(models.Model):
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-    baniCheltuiti = models.FloatField(blank=True)
-    baniVenituri = models.FloatField(blank=True)
-    sold = models.FloatField(blank=True)
-
-    def addCheltuieli(self):
-        self.baniCheltuiti = self.baniCheltuiti + self.sumaCheltuita
-        self.save()
-    def addVenituri(self):
-        self.baniVenituri = self.baniVenituri + self.sumaVenit
-        self.save()
-    def interogareSold(self):
-        self.sold= self.addVenituri - self.baniCheltuiti
-        self.save()
-        return sold

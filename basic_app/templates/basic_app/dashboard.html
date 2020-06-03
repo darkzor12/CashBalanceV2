@@ -2,4 +2,24 @@
 
 {% block body_block %}
 
+<div class="container balanta">
+  <div class="col-md-4">
+    <div class="bText">
+          <strong>Balanta actuala:</strong>
+    </div>
+    <div class="soldDashboard">
+    <p>Venituri: {{venituri_total}}</p>
+    <p>Cheltuieli: {{cheltuieli_total}}</p>
+    <p>Sold: {{sold}}</p>
+    </div>
+    <div class="soldFace">
+      {% if sold >= 0 %}
+        <span style='font-size:100px;'>&#128512;</span>
+      {% else %}
+        <span style='font-size:100px;'>&#128532;</span>
+      {% endif %}
+    </div>  
+  </div>
+</div>
+
 {% endblock %}

@@ -4,26 +4,27 @@
 
 <div class="centerstage">
 
+  <div class="col-md-8">
+    <div class="blog_post">
 
+<a class ='btn btn-default add-button-cheltuieli' href="{% url 'cheltuieli_new' %}"><span class='glyphicon glyphicon-plus'></a>
 
-<p><a class ='btn btn-default add-button-cheltuieli' href="{% url 'cheltuieli_new' %}"><span class='glyphicon glyphicon-plus'></a>
-<img class="money-gif" src="https://media.giphy.com/media/l3mZaGv4Krokd3GM0/giphy.gif" alt="Wait ... ">
-</p>
   {% if user.is_authenticated %}
   {% for cheltuieli in cheltuieli_list %}
   <div class="cheltuieli">
-      <h1><a href="{% url 'cheltuieli_detail' pk=cheltuieli.pk %}">{{cheltuieli.sumaCheltuita}} LEI</a></h1>
+      <h1><a class="textCheltuieli" href="{% url 'cheltuieli_detail' pk=cheltuieli.pk %}">{{cheltuieli.sumaCheltuita}} LEI</a></h1>
       <div class="date">
           <p>Created on : {{cheltuieli.create_date|date:"Y-m-d H:i"}}</p>
-          <a class='btn btn-primary' href="{% url 'cheltuieli_update' pk=cheltuieli.pk %}">
-            <span class='glyphicon glyphicon-pencil'></span>  </a>
-          <a class='btn btn-primary' href="{% url 'cheltuieli_remove' pk=cheltuieli.pk %}">
-            <span class='glyphicon glyphicon-remove'></span>  </a>
+          <a class='btn btn-primary cheltuieliPencil' href="{% url 'cheltuieli_update' pk=cheltuieli.pk %}">
+            <span class='glyphicon glyphicon-pencil '></span>  </a>
+          <a class='btn btn-primary cheltuieliRemove' href="{% url 'cheltuieli_remove' pk=cheltuieli.pk %}">
+            <span class='glyphicon glyphicon-remove '></span>  </a>
       </div>
   </div>
   {% endfor %}
 </div>
 {% endif %}
-
+</div>
+</div>
 
 {% endblock %}

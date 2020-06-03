@@ -1,34 +1,131 @@
-.bodyClass{
-  background:#1a1300;
-  /* background: rgb(238,174,202);
-  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%); */
+
+.formContact{
+
+  border: 5px #6b9080 solid;
+  margin-left: 15px;
+  padding: 15px;
+  width: 600px;
+  background-image:url("realistic-dark-tropical-leaves-background_23-2148409315.jpg");
+  background-size:cover;
+  color: white;
 }
-.money-gif{
-  padding-left: 200px;
-  position: relative;
+
+#fname, #lname, #email1{
+  width: 350px;
+  color: black;
+}
+.pName{
+    padding-right: 15px;
+    font-family: 'Roboto', sans-serif;
+}
+.lName{
+  padding-right: 33px;
+  font-family: 'Roboto', sans-serif;
+}
+.EmailN{
+  padding-right: 30px;
+  font-family: 'Roboto', sans-serif;
+}
+.tara{
+  font-family: 'Roboto', sans-serif;
+}
+#country{
+  margin-left: 75px;
+}
+#subject{
+  margin-left: 55px;
+  width: 400px
+}
+
+.bodyClass{
+  background-color:white;
+  font-family: 'Roboto', sans-serif;
+}
+.slogan{
+  border: 1px black solid;
+  height: 50px;
+  background-color:#2f3e46;
+  color:white;
+  text-align: center;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 27px;
+}
+.custom-navbar{
+  height: 80px;
+  padding-top:14px;
+  font-size: 16px;
+  background-color: #6b9080;
+
+}
+.bText{
+  margin-left: 50px;
+  font-size: 30px;
+  position: absolute;
+  right:-300px;
+  top:100px;
+  width: 50%;
+}
+.soldFace{
+  margin-left: 50px;
+  font-size: 30px;
+  position: absolute;
+  right:-275px;
+  top:400px;
+  width: 50%;
+}
+.soldDashboard{
+  margin-left: 50px;
+  font-size: 30px;
+  position: absolute;
+  right:-300px;
+  top:200px;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+  text-align:center;
+  width: 300px;
 }
 .add-button-cheltuieli{
-  background: #ffcc00;
+  background-color:#eaf4f4;
   position: relative;
+  right: -430px;
+}
+
+.cheltuieliPencil{
+  background-color:#2f3e46;
+}
+.cheltuieliRemove{
+  background-color:#2f3e46;
+}
+.textCheltuieli{
+  color:#2f3e46;
+}
+.navBarNav li a{
+  color:white !important;
+}
+.navbar-right li a{
+  color:white !important;
 }
 .cheltuieli {
   border-radius: 25px;
-  background-color:#E0E0E0;
+  background-color:#cce3de;
   padding: 20px;
-  width: 800px;
+  width: 1000px;
   height: 180px;
   margin:20px auto;
+  margin-left: 400px !important;
 }
 .venituri{
   border-radius: 25px;
-  background-color:#E0E0E0;
+  background-color:#cce3de;
   padding: 20px;
-  width: 800px;
+  width: 1000px;
   height: 180px;
   margin:20px auto;
+  margin-left: 400px !important;
 }
 
-.imgAtasamentCheltuieli{
-  width:500px;
-  height:500px;
-}
+
+/*
+Contact CSS
+ */

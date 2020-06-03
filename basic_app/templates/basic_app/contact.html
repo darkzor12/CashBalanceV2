@@ -1,0 +1,53 @@
+{%extends 'basic_app/base.html' %}
+
+{% block body_block %}
+
+
+<div class="container">
+ <form action="dashboard.html">
+  <div class="formContact">
+
+   <p>
+     <label class="pName" for="fname">Prenumele tau</label>
+     <input type="text" id="fname" name="firstname" placeholder="Prenumele tau">
+   </p>
+
+   <p >
+     <label class='lName' for="lname">Numele tau</label>
+     <input type="text" id="lname" name="lastname" placeholder="Numele tau">
+   </p>
+
+   <p>
+     <label class="EmailN" for="email1">Email-ul tau</label>
+     <input type="email" id="email1" name="email" placeholder="Email-ul tau">
+   </p>
+
+   <p>
+     <label class="tara" for="country">Tara</label>
+     <select id="country" name="country">
+       <option value="australia">Romania</option>
+       <option value="canada">Canada</option>
+       <option value="usa">USA</option>
+       <option value="usa">Franta</option>
+       <option value="usa">Germania</option>
+       <option value="usa">Spania</option>
+       <option value="usa">Olanda</option>
+       <option value="usa">Elvetia</option>
+     </select>
+   </p>
+
+
+   <p>
+     <label for="subject">Subiect</label>
+     <textarea id="subject" name="subject" placeholder="Scrie ceva ... " style="height:200px"></textarea>
+   </p>
+
+   <p>
+     <input type="submit" value="Submit">
+   </p>
+
+    </div>
+
+ </form>
+</div>
+{% endblock %}

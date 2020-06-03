@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404, redirect
 from django.utils import timezone
-from basic_app.models import Venituri,Cheltuieli,Sold
+from basic_app.models import Venituri,Cheltuieli
 from basic_app.forms import VenituriForm,CheltuieliForm
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
@@ -14,10 +14,27 @@ from django.views.generic import (TemplateView, ListView,
 ############
 class DashBoardView(LoginRequiredMixin,TemplateView):
     # TO DO
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in a QuerySet of all the books
+        v = Venituri.objects.all()
+        c = Cheltuieli.objects.all()
+        vi = sum([x.sumaVenit for x in v])
+        ci = sum([x.sumaCheltuita for x in c])
+        sold =  vi - ci
+        context['venituri_list'] = v
+        context['venituri_total'] = vi
+        context['cheltuieli_total'] = ci
+        context['sold'] = sold
+        return context
     template_name='dashboard.html'
 
 class AboutView(TemplateView):
     template_name='about.html'
+
+class ContactView(TemplateView):
+    template_name='contact.html'
 
 class CheltuieliListView(LoginRequiredMixin,ListView):
     model = Cheltuieli
@@ -28,8 +45,25 @@ class CheltuieliListView(LoginRequiredMixin,ListView):
 class VenituriListView(LoginRequiredMixin,ListView):
     model = Venituri
 
-    def get_queryset(self):
-        return Venituri.objects.filter(create_date__lte=timezone.now()).order_by('-create_date')
+    # def get_queryset(self):
+    #     v = Venituri.objects.filter(create_date__lte=timezone.now()).order_by('-create_date')
+    #     c = Cheltuieli.objects.all()
+    #     return v | c
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in a QuerySet of all the books
+        v = Venituri.objects.all()
+        c = Cheltuieli.objects.all()
+        vi = sum([x.sumaVenit for x in v])
+        ci = sum([x.sumaCheltuita for x in c])
+        sold =  vi - ci
+        context['venituri_list'] = v
+        context['venituri_total'] = vi
+        context['cheltuieli_total'] = ci
+        context['sold'] = sold
+        return context
+
 
 class CheltuieliDetailView(LoginRequiredMixin,DetailView):
     model = Cheltuieli
