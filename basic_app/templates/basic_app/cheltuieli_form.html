@@ -1,9 +1,9 @@
 {%extends 'basic_app/base.html' %}
 
 {% block body_block %}
-<h1>Cheltuiala Noua</h1>
+<h1 id='cheltNoua'><strong>Cheltuiala Noua</strong></h1>
 
-<form class="post-form" method="POST" enctype="multipart/form-data">
+<form class="post-form cheltuieliForm" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   {{ form.as_p }}
   <button class="save btn btn-default" type="submit">Save</button>

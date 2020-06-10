@@ -4,6 +4,7 @@ from . import views
 urlpatterns= [
     url(r'^$', views.DashBoardView.as_view(), name='dashboard'),
     url(r'^about/$', views.AboutView.as_view(), name="about"),
+    url(r'^rapoarte/$', views.chart, name="rapoarte"),
     url(r'^contact/$', views.ContactView.as_view(), name="contact"),
     url(r'^cheltuieli/$', views.CheltuieliListView.as_view(),name="cheltuieli_list"),
     url(r'^venituri/$', views.VenituriListView.as_view(),name="venituri_list"),

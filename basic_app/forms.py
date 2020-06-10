@@ -5,7 +5,7 @@ class CheltuieliForm(forms.ModelForm):
 
     class Meta():
         model = Cheltuieli
-        fields = ('user','sumaCheltuita','create_date','note','atasament_cheltuieli' )
+        fields = ('user','sumaCheltuita','create_date','categorie','note','atasament_cheltuieli' )
 
 class VenituriForm(forms.ModelForm):
     class Meta():

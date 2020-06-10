@@ -4,6 +4,16 @@ from basic_app.models import Venituri,Cheltuieli
 from basic_app.forms import VenituriForm,CheltuieliForm
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
+import matplotlib.pyplot as plt
+from matplotlib import pylab
+from io import BytesIO
+import base64
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import numpy as np
+from io import *
+from matplotlib.backends.backend_agg import FigureCanvasAgg
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import (TemplateView, ListView,
                                   DetailView, CreateView,
@@ -13,7 +23,6 @@ from django.views.generic import (TemplateView, ListView,
 #CBV
 ############
 class DashBoardView(LoginRequiredMixin,TemplateView):
-    # TO DO
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
@@ -23,7 +32,6 @@ class DashBoardView(LoginRequiredMixin,TemplateView):
         vi = sum([x.sumaVenit for x in v])
         ci = sum([x.sumaCheltuita for x in c])
         sold =  vi - ci
-        context['venituri_list'] = v
         context['venituri_total'] = vi
         context['cheltuieli_total'] = ci
         context['sold'] = sold
@@ -33,8 +41,45 @@ class DashBoardView(LoginRequiredMixin,TemplateView):
 class AboutView(TemplateView):
     template_name='about.html'
 
-class ContactView(TemplateView):
+class ContactView(LoginRequiredMixin,TemplateView):
     template_name='contact.html'
+
+@login_required
+def chart(request):
+    cumparaturi=Cheltuieli.objects.filter(categorie='Cumparaturi')
+    masina=Cheltuieli.objects.filter(categorie='Masina')
+    casa=Cheltuieli.objects.filter(categorie='Casa')
+    timpLiber=Cheltuieli.objects.filter(categorie='Timp Liber')
+    diverse=Cheltuieli.objects.filter(categorie='Diverse')
+
+    vCumparaturi = sum([x.sumaCheltuita for x in cumparaturi])
+    vMasina = sum([x.sumaCheltuita for x in masina])
+    vCasa = sum([x.sumaCheltuita for x in casa])
+    vtimpLiber = sum([x.sumaCheltuita for x in timpLiber])
+    vDiverse = sum([x.sumaCheltuita for x in diverse])
+
+    plt.close()
+
+    labels=['Cumparaturi','Masina','Casa','Timp Liber','Diverse']
+    ydata=[vCumparaturi,vMasina,vCasa,vtimpLiber,vDiverse]
+    colors = ['gold', 'yellowgreen', 'lightcoral', 'lightskyblue','purple']
+    explode = (0.1, 0, 0, 0,0)
+    plt.pie(ydata, explode=explode, labels=labels, colors=colors,
+    autopct='%1.1f%%', shadow=True, startangle=140)
+
+    plt.tight_layout()
+
+    buffer = BytesIO()
+    plt.savefig(buffer, format='png')
+    buffer.seek(0)
+    image_png = buffer.getvalue()
+    buffer.close()
+
+    graphic = base64.b64encode(image_png)
+    graphic = graphic.decode('utf-8')
+
+    return render(request, 'rapoarte.html',{'graphic':graphic})
+
 
 class CheltuieliListView(LoginRequiredMixin,ListView):
     model = Cheltuieli

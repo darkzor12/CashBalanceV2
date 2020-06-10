@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'basic_app'
+    'basic_app',
+    'django_nvd3',
 ]
 
 MIDDLEWARE = [
@@ -120,7 +121,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT= os.path.join(BASE_DIR, 'static')
-
+import chartkick
+STATICFILES_DIRS = (
+    chartkick.js(),
+)
 #MEDIA_DIR
 MEDIA_URL='/media/'
 MEDIA_ROOT= MEDIA_DIR
